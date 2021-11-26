@@ -1,5 +1,5 @@
 import type { ActionFunction, LinksFunction, MetaFunction } from "remix";
-import { useActionData, Link, useSearchParams } from "remix";
+import { useActionData, Link, useSearchParams, Form } from "remix";
 import { db } from "~/utils/db.server";
 import { createUserSession, login, register } from "~/utils/session.server";
 import stylesUrl from "../styles/login.css";
@@ -111,7 +111,7 @@ export default function Login() {
     <div className="container">
       <div className="content" data-light="">
         <h1>Login</h1>
-        <form method="post" aria-describedby={actionData?.formError ? "form-error-message" : undefined}>
+        <Form method="post" aria-describedby={actionData?.formError ? "form-error-message" : undefined}>
           <input type="hidden" name="redirectTo" value={searchParams.get("redirectTo") ?? undefined} />
           <fieldset>
             <legend className="sr-only">Login or Register?</legend>
@@ -176,7 +176,7 @@ export default function Login() {
           <button type="submit" className="button">
             Submit
           </button>
-        </form>
+        </Form>
       </div>
       <div className="links">
         <ul>
